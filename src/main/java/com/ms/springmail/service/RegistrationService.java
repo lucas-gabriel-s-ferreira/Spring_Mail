@@ -48,7 +48,7 @@ public class RegistrationService {
 
         confirmationToken.setConfirmedDate(LocalDateTime.now());
 
-       userService.enableUser(confirmationToken.getUser().getEmail());
+        userService.enableUser(confirmationToken.getUser().getEmail());
 
         return "Email confirmed";
     }

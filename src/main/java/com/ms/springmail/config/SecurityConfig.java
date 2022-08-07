@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/registration/**")
+                .antMatchers("/registration/**", "/form")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -45,7 +45,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(userService);
         return provider;
     }
-
-
-
 }

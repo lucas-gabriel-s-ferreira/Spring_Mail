@@ -30,4 +30,20 @@ public class EmailService {
             throw new IllegalStateException("Email sending failed");
         }
     }
+
+    public void sendForm(String email){
+        try {
+            MimeMessage mail = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mail, "UTF-8");
+            helper.setText(email, true);
+            String ownerEmail = "gabrielslv718@gmail.com";
+            helper.setTo(ownerEmail);
+            helper.setSubject("Form");
+            helper.setFrom("emailmailsendertest42@gmail.com");
+            javaMailSender.send(mail);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            throw new IllegalStateException("Email sending failed");
+        }
+    }
 }

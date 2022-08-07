@@ -36,12 +36,9 @@ public class UserService implements UserDetailsService {
         user.setPassword(encodedPassword);
         userRepository.save(user);
 
-        // criação do token de confirmação
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),LocalDateTime.now().plusMinutes(15),user);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-        // envia o token para o email do usuário
 
         return token;
     }
